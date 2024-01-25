@@ -58,7 +58,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public void dropTable() {
-        String query = "DROP TABLE employees IF EXISTS;";
+        String query = "DROP TABLE employees;";
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(query);
 
@@ -123,13 +123,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             preparedStatement.setString(1, email);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
-                    employee = new Employee();
-                    employee.setId(resultSet.getLong("id"));
-                    employee.setFirstName(resultSet.getString("first_name"));
-                    employee.setLastName(resultSet.getString("last_name"));
-                    employee.setAge(resultSet.getInt("age"));
-                    employee.setEmail(resultSet.getString("email"));
-                    employee.setJobId(resultSet.getInt("job_id"));
+                    employee = createEmployee(resultSet);
                 }
             }
         } catch (SQLException e) {

@@ -26,6 +26,7 @@ public class Main {
 //        System.out.println(employeeService.getAllEmployees());
 //        System.out.println(employeeService.getEmployeeByPosition("Mentor"));
 //        System.out.println(employeeService.findByEmail("alinur@gmail.com"));
+           employeeService.dropTable();
 
 //        System.out.println(jobService.getJobById(1L));
 //        System.out.println(jobService.getJobByEmployeeId(1L));
